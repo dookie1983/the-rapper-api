@@ -3,12 +3,17 @@ from .models import Single
 
 
 class SingleSerializer(serializers.ModelSerializer):
+    artist = serializers.SerializerMethodField()
     class Meta:
         model = Single
-        fields = "_all_"
+        fields = ['name', 'youtube_views', 'artist']
+
+# set return artist with aka
+    def get_artist(self, instance):
+        return instance.artist.aka
 
 
 class SingleSerializerSave(serializers.ModelSerializer):
     class Meta:
         model = Single
-        fields = ['name', 'view', 'artist_id']
+        fields = ['name', 'youtube_views', 'artist']
