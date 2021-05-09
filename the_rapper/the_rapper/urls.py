@@ -24,5 +24,6 @@ router.register(r'artist',ArtistViewSet, basename='artist')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include("rest_framework.urls")),
-    path('artists/' , ArtistViewSet.all, name='artist-all')
+    path('artists/' , ArtistViewSet.all, name='artist-all'),
+    path('artist' , ArtistViewSet.create, name='artist-create')
 ]
