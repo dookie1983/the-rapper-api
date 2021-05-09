@@ -26,10 +26,14 @@ router.register(r'single', SingleViewSet, basename='single')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include("rest_framework.urls")),
+    path('artists', ArtistViewSet.artist_list, name='artist-list'),
+    path('artists/<int:artistId>', ArtistViewSet.artist_detail, name='artist-detail'),
 
-    path('artists/', ArtistViewSet.all, name='artist-all'),
-    path('artist', ArtistViewSet.create, name='artist-create'),
-    path('artist/<int:artistId>', ArtistViewSet.update, name='artist-update'),
+    # path('artists/', ArtistViewSet.all, name='artist-all'),
+    # path('artist', ArtistViewSet.create, name='artist-create'),
+    # # path('artist/id/<int:artistId>', ArtistViewSet.getByID, name='artist-by-id'),
+    # path('artist/<int:artistId>', ArtistViewSet.remove, name='artist-remove'),
+    # path('artists/<int:artistId>', ArtistViewSet.update, name='artist-update'),
 
     #get_artist_by_id
 

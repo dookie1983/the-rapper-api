@@ -5,7 +5,7 @@ class ArtistSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artist
         # fields = "_all_"
-        fields = ['aka', 'name', 'age']
+        fields = ['id', 'aka', 'name', 'age']
 
 class ArtistSerializerSave(serializers.ModelSerializer):
     class Meta:
