@@ -17,13 +17,17 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 from artist.views_api import ArtistViewSet
+from single.views_api import SingleViewSet
 
 router = DefaultRouter()
-router.register(r'artist',ArtistViewSet, basename='artist')
+router.register(r'artist', ArtistViewSet, basename='artist')
+router.register(r'single', SingleViewSet, basename='single')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include("rest_framework.urls")),
-    path('artists/' , ArtistViewSet.all, name='artist-all'),
-    path('artist' , ArtistViewSet.create, name='artist-create')
+    path('artists/', ArtistViewSet.all, name='artist-all'),
+    path('artist', ArtistViewSet.create, name='artist-create'),
+    path('singles/', SingleViewSet.all, name='single-all'),
+    path('single', SingleViewSet.create, name='single-create')
 ]

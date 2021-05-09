@@ -7,9 +7,9 @@ from rest_framework.response import Response
 
 class ArtistViewSet(viewsets.ModelViewSet):
     @api_view(['GET'])
-    def all(self):
+    def all(self, format=None):
         if self.method == 'GET':
-            artists = Artist.objects.all()
+            artists = Artist.objects.all();
             artists_serializer = ArtistSerializer(artists, many=True)
             return Response(artists_serializer.data)
 
