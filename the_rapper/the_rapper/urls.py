@@ -26,8 +26,14 @@ router.register(r'single', SingleViewSet, basename='single')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include("rest_framework.urls")),
+
     path('artists/', ArtistViewSet.all, name='artist-all'),
     path('artist', ArtistViewSet.create, name='artist-create'),
+    path('artist/<int:artistId>', ArtistViewSet.update, name='artist-update'),
+
+    #get_artist_by_id
+
     path('singles/', SingleViewSet.all, name='single-all'),
     path('single', SingleViewSet.create, name='single-create')
+    #delete_single_by_id
 ]

@@ -21,3 +21,4 @@ class SingleViewSet(viewsets.ModelViewSet):
                 single_serializer.save()
                 return Response(single_serializer.data, status=status.HTTP_201_CREATED)
             return Response(single_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#handle error

@@ -9,7 +9,7 @@ class ArtistViewSet(viewsets.ModelViewSet):
     @api_view(['GET'])
     def all(self, format=None):
         if self.method == 'GET':
-            artists = Artist.objects.all();
+            artists = Artist.objects.all()
             artists_serializer = ArtistSerializer(artists, many=True)
             return Response(artists_serializer.data)
 
@@ -21,3 +21,15 @@ class ArtistViewSet(viewsets.ModelViewSet):
                 artists_serializer.save()
                 return Response(artists_serializer.data, status=status.HTTP_201_CREATED)
             return Response(artists_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @api_view(['PUT'])
+    def update(self, artistId):
+        if self.method == 'PUT':
+            artist = Artist.objects.get(pk=artistId)
+            artists_serializer = ArtistSerializer(artist, data=self.data)
+            if artists_serializer.is_valid():
+                artists_serializer.save()
+                return Response(artists_serializer.data, status=status.HTTP_201_CREATED)
+            return Response(artists_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+#handle error
